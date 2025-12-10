@@ -2,13 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Custom Cursor Logic
     const cursor = document.querySelector('.cursor');
     const follower = document.querySelector('.cursor-follower');
-    
+
     // Only active on desktop
     if (window.matchMedia("(min-width: 768px)").matches) {
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-            
+
             // Follower delay
             setTimeout(() => {
                 follower.style.left = e.clientX + 'px';
@@ -66,5 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
         section.style.transform = 'translateY(20px)';
         section.style.transition = 'all 0.8s ease-out';
         observer.observe(section);
+    });
+
+    // Project Cards unique hover effect
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     });
 });
