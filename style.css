@@ -465,6 +465,11 @@ h2 {
     }
 }
 
+/* Base state: PDF shown, Message hidden */
+.mobile-pdf-message {
+    display: none;
+}
+
 /* Mobile Navigation & Responsive Adjustments */
 @media (max-width: 768px) {
     .menu-btn {
@@ -543,8 +548,37 @@ h2 {
 
     /* Fix Project 3 PDF Preview on Mobile */
     .pdf-container {
-        height: 300px;
-        /* Reduced height for mobile */
+        display: none;
+        /* Hide interactive PDF on mobile */
+    }
+
+    .mobile-pdf-message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 2px dashed rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        margin-bottom: 2rem;
+    }
+
+    .mobile-pdf-message .icon-computer {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .mobile-pdf-message p {
+        font-weight: 600;
+        color: var(--accent-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .mobile-pdf-message span {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
     }
 
     .gallery-grid {
