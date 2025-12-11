@@ -467,7 +467,7 @@ h2 {
 
 /* Base state: PDF shown, Message hidden */
 .mobile-pdf-message {
-    display: none;
+    display: none !important;
 }
 
 /* Mobile Navigation & Responsive Adjustments */
@@ -546,14 +546,14 @@ h2 {
         padding: 60px 5%;
     }
 
-    /* Fix Project 3 PDF Preview on Mobile */
-    .pdf-container {
+    /* Hide interactive PDF and Placeholders on mobile */
+    .pdf-container,
+    .project-placeholder {
         display: none;
-        /* Hide interactive PDF on mobile */
     }
 
     .mobile-pdf-message {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         align-items: center;
         justify-content: center;
