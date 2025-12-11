@@ -26,6 +26,10 @@ body {
     position: relative;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 
 
 
@@ -139,6 +143,36 @@ body {
 
 .nav-links a:hover {
     color: var(--accent-color);
+}
+
+/* Menu Button (Desktop: Hidden) */
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+.menu-btn .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Menu Open Animation */
+.menu-btn.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.menu-btn.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
 }
 
 /* Hero Section */
@@ -431,10 +465,67 @@ h2 {
     }
 }
 
-/* Mobile */
+/* Mobile Navigation & Responsive Adjustments */
 @media (max-width: 768px) {
+    .menu-btn {
+        display: flex;
+    }
+
+    /* Dropdown Menu Style */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        /* Directly below the navbar */
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        background: rgba(15, 23, 42, 0.98);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        transition: all 0.3s ease-in-out;
+        z-index: 999;
+        /* Reset full-screen styles */
+        right: auto;
+        padding: 0;
+    }
+
+    .nav-links.active {
+        height: auto;
+        padding: 1rem 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+    }
+
+    /* Stagger animation for links */
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
     .subtitle {
@@ -444,6 +535,46 @@ h2 {
     .glow-circle {
         width: 300px;
         height: 300px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    /* Fix Project 3 PDF Preview on Mobile */
+    .pdf-container {
+        height: 300px;
+        /* Reduced height for mobile */
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .center-grid .gallery-item {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Reduce Blob size/intensity on mobile */
+    .blob {
+        opacity: 0.4;
+        filter: blur(60px);
+    }
+
+    .blob-1 {
+        width: 300px;
+        height: 300px;
+    }
+
+    .blob-2 {
+        width: 350px;
+        height: 350px;
+    }
+
+    .blob-3 {
+        width: 250px;
+        height: 250px;
     }
 }
 
