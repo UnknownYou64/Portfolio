@@ -26,32 +26,7 @@ body {
     position: relative;
 }
 
-/* Custom Cursor */
-.cursor,
-.cursor-follower {
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, opacity 0.3s ease;
-    mix-blend-mode: difference;
-}
 
-.cursor {
-    width: 8px;
-    height: 8px;
-    background: #fff;
-}
-
-.cursor-follower {
-    width: 30px;
-    height: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    transition: transform 0.15s ease-out, top 0.1s, left 0.1s;
-}
 
 
 /* Animated Background - Liquid Blobs */
@@ -222,12 +197,24 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 0 20px var(--accent-glow);
     backdrop-filter: blur(4px);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     border: none;
     cursor: pointer;
     font-family: inherit;
     font-size: 1rem;
     position: relative;
     overflow: hidden;
+}
+
+.scroll-btn .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.scroll-btn:hover .arrow {
+    transform: translateY(3px);
 }
 
 .btn-primary:hover {
